@@ -1,5 +1,4 @@
 const i18n = {
-    // 1. 中英雙語對照 (Bilingual)
     bilingual: {
         appTitle: "🔒 離線日誌 Daily Offline",
         slogan: "隨心書寫，靜思細想。 Write Freely, Think Quietly.",
@@ -54,7 +53,6 @@ const i18n = {
         alertPassMismatch: "兩次輸入的新密碼不一致！ Passwords do not match!",
         alertNoDataExport: "沒有可匯出的數據！ No data to export!"
     },
-    // 2. 全繁體中文 (Traditional Chinese)
     zh: {
         appTitle: "🔒 離線日誌",
         slogan: "隨心書寫，靜思細想。",
@@ -109,7 +107,6 @@ const i18n = {
         alertPassMismatch: "兩次輸入的新密碼不一致！",
         alertNoDataExport: "沒有可匯出的數據！"
     },
-    // 3. 全英文 (English)
     en: {
         appTitle: "🔒 Daily Offline",
         slogan: "Write Freely, Think Quietly.",
