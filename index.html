@@ -22,12 +22,12 @@
     <script src="./app.js" defer></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" role="main">
         <!-- 語言切換選單：雙語 / 全中文 / 全英文 -->
-        <div class="lang-switch">
-            <button class="lang-btn" id="btn-bilingual">中英雙語</button>
-            <button class="lang-btn" id="btn-zh">全中文</button>
-            <button class="lang-btn" id="btn-en">English</button>
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button class="lang-btn" id="btn-bilingual" aria-label="Switch to Bilingual Mode">中英雙語</button>
+            <button class="lang-btn" id="btn-zh" aria-label="切換至全中文介面">全中文</button>
+            <button class="lang-btn" id="btn-en" aria-label="Switch to English Interface">English</button>
         </div>
 
         <header>
@@ -47,33 +47,33 @@
         <div class="card" id="auth-card">
             <h3 data-i18n="unlockTitle"></h3>
             <div style="position:relative;">
-                <input type="password" id="master-key" data-i18n-placeholder="masterKeyPlaceholder">
+                <input type="password" id="master-key" data-i18n-placeholder="masterKeyPlaceholder" aria-label="Master Password Input">
             </div>
-            <button class="primary-btn" id="unlock-btn" data-i18n="unlockBtn"></button>
+            <button class="primary-btn" id="unlock-btn" data-i18n="unlockBtn" aria-label="Unlock Vault Button"></button>
             
             <details class="reset-details">
                 <summary data-i18n="resetToggleText"></summary>
                 <div class="reset-box">
                     <p class="reset-notice" data-i18n="resetWarningText"></p>
-                    <button class="danger-btn" id="btn-reset" data-i18n="resetBtnText"></button>
+                    <button class="danger-btn" id="btn-reset" data-i18n="resetBtnText" aria-label="Reset Vault Data"></button>
                 </div>
             </details>
         </div>
 
         <div id="vault-content" style="display: none;">
-            <div class="status-bar">
-                <span class="status-text" data-i18n="statusUnlocked"></span>
-                <button class="lock-btn" id="btn-lock" data-i18n="lockBtn"></button>
+            <div class="status-bar" id="status-bar">
+                <span class="status-text" id="status-text" data-i18n="statusUnlocked"></span>
+                <button class="lock-btn" id="btn-lock" data-i18n="lockBtn" aria-label="Lock Vault (Shortcut: Esc)"></button>
             </div>
 
             <!-- 日誌撰寫區 -->
             <div class="card">
                 <h3 data-i18n="addTitle"></h3>
-                <input type="text" id="note-title" data-i18n-placeholder="noteTitlePlaceholder">
-                <textarea id="note-content" rows="6" data-i18n-placeholder="noteContentPlaceholder" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color); background:#0b0f19; color:#fff; box-sizing:border-box; font-size:0.95rem; resize:vertical;"></textarea>
+                <input type="text" id="note-title" data-i18n-placeholder="noteTitlePlaceholder" aria-label="Journal Title">
+                <textarea id="note-content" rows="6" data-i18n-placeholder="noteContentPlaceholder" aria-label="Journal Content" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color); background:#0b0f19; color:#fff; box-sizing:border-box; font-size:0.95rem; resize:vertical;"></textarea>
                 
                 <div class="flex-row" style="margin-bottom: 8px;">
-                    <select id="note-mood" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color); background:#0b0f19; color:#fff; font-size:0.95rem;">
+                    <select id="note-mood" aria-label="Select Mood Tag" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color); background:#0b0f19; color:#fff; font-size:0.95rem;">
                         <option value="🌿 平靜 Quiet" data-i18n="moodQuiet"></option>
                         <option value="💡 思考 Thoughtful" data-i18n="moodThoughtful"></option>
                         <option value="☀️ 晴朗 Joyful" data-i18n="moodJoyful"></option>
@@ -81,14 +81,17 @@
                     </select>
                 </div>
 
-                <button class="primary-btn" id="btn-add-entry" data-i18n="addBtn"></button>
+                <div class="btn-hint-container">
+                    <button class="primary-btn" id="btn-add-entry" data-i18n="addBtn" aria-label="Encrypt and Save Journal Entry"></button>
+                    <span class="shortcut-hint">(Shortcut: Ctrl + Enter)</span>
+                </div>
             </div>
 
             <!-- 日誌列表區 -->
             <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                     <h3 data-i18n="listTitle" style="margin:0;"></h3>
-                    <input type="text" id="search-input" data-i18n-placeholder="searchPlaceholder" style="width: 200px; padding: 6px 12px; margin:0;">
+                    <input type="text" id="search-input" data-i18n-placeholder="searchPlaceholder" aria-label="Search Journal Entries" style="width: 200px; padding: 6px 12px; margin:0;">
                 </div>
                 <div id="pass-list" style="margin-top: 15px;"></div>
             </div>
@@ -96,23 +99,23 @@
             <!-- 數據管理區 -->
             <div class="card">
                 <h3 data-i18n="backupTitle"></h3>
-                <button class="secondary-btn" id="btn-change-pass" data-i18n="changePassBtn" style="margin-bottom: 12px;"></button>
-                <button class="primary-btn" id="btn-export" data-i18n="exportBtn" style="margin-bottom: 15px;"></button>
+                <button class="secondary-btn" id="btn-change-pass" data-i18n="changePassBtn" style="margin-bottom: 12px;" aria-label="Change Master Password"></button>
+                <button class="primary-btn" id="btn-export" data-i18n="exportBtn" style="margin-bottom: 15px;" aria-label="Export Encrypted Backup"></button>
                 
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
                 
                 <h4 style="margin: 0 0 8px 0;" data-i18n="importTitle"></h4>
                 <div class="file-upload-wrapper">
                     <label for="import-file" class="file-upload-label" id="file-label" data-i18n="chooseFileBtn"></label>
-                    <input type="file" id="import-file" accept=".json">
+                    <input type="file" id="import-file" accept=".json" aria-label="Select JSON Backup File">
                 </div>
-                <button class="primary-btn" id="btn-import" data-i18n="importBtn"></button>
+                <button class="primary-btn" id="btn-import" data-i18n="importBtn" aria-label="Import Backup File"></button>
             </div>
         </div>
 
         <p class="notice-text" data-i18n="footerNotice"></p>
     </div>
 
-    <div id="toast"></div>
+    <div id="toast" role="alert" aria-live="polite"></div>
 </body>
 </html>
