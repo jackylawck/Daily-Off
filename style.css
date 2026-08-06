@@ -26,7 +26,7 @@ body {
     width: 100%; 
 }
 
-/* Language Switcher Buttons (Bilingual, Chinese, English) */
+/* Language Switcher Buttons */
 .lang-switch { 
     text-align: right; 
     margin-bottom: 15px; 
@@ -78,12 +78,19 @@ h1 {
     font-weight: 500; 
 }
 
-/* Status Bar */
+/* Status Bar & Flash Animation */
 .status-bar { 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
     margin-bottom: 15px; 
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.status-bar.flash-success {
+    background: rgba(16, 185, 129, 0.2);
 }
 
 .status-text { 
@@ -101,6 +108,7 @@ h1 {
     cursor: pointer; 
     font-size: 0.85rem; 
     transition: all 0.2s;
+    width: auto;
 }
 
 .lock-btn:hover { 
@@ -134,11 +142,39 @@ input, select, button {
     color: #fff; 
     box-sizing: border-box; 
     font-size: 0.95rem; 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input:focus, select:focus, textarea:focus { 
     outline: none; 
     border-color: var(--accent-color); 
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+/* Error Shake Animation for Master Password Input */
+@keyframes shakeAnimation {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+    animation: shakeAnimation 0.4s ease-in-out;
+    border-color: var(--danger-color) !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Button & Shortcut Hints */
+.btn-hint-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.shortcut-hint {
+    font-size: 0.75rem;
+    color: var(--text-sub);
 }
 
 /* File Upload Controls */
@@ -326,11 +362,13 @@ ul.notice-list li {
     border-radius: 8px; 
     font-weight: bold; 
     font-size: 0.9rem; 
-    transition: bottom 0.3s ease; 
+    transition: bottom 0.3s ease, opacity 0.3s ease; 
     z-index: 1000; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.5); 
+    opacity: 0;
 }
 
 #toast.show { 
     bottom: 20px; 
+    opacity: 1;
 }
