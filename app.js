@@ -51,7 +51,8 @@ const i18n = {
         promptNewPass: "請輸入新的主密碼 Enter new Master Password:",
         promptConfirmPass: "請再次輸入新的主密碼以進行確認 Confirm new Master Password:",
         alertPassMismatch: "兩次輸入的新密碼不一致！ Passwords do not match!",
-        alertNoDataExport: "沒有可匯出的數據！ No data to export!"
+        alertNoDataExport: "沒有可匯出的數據！ No data to export!",
+        storageQuotaWarning: "⚠️ 提醒：容量已被使用超過 80%，建議適時匯出備份！ Storage over 80% capacity."
     },
     zh: {
         appTitle: "🔒 離線日誌",
@@ -105,7 +106,8 @@ const i18n = {
         promptNewPass: "請輸入新的主密碼：",
         promptConfirmPass: "請再次輸入新的主密碼以進行確認：",
         alertPassMismatch: "兩次輸入的新密碼不一致！",
-        alertNoDataExport: "沒有可匯出的數據！"
+        alertNoDataExport: "沒有可匯出的數據！",
+        storageQuotaWarning: "⚠️ 提醒：容量已被使用超過 80%，建議適時匯出備份！"
     },
     en: {
         appTitle: "🔒 Daily Offline",
@@ -159,7 +161,8 @@ const i18n = {
         promptNewPass: "Enter your new Master Password:",
         promptConfirmPass: "Confirm your new Master Password:",
         alertPassMismatch: "Passwords do not match!",
-        alertNoDataExport: "No data to export!"
+        alertNoDataExport: "No data to export!",
+        storageQuotaWarning: "⚠️ Storage capacity over 80%. Consider exporting a backup!"
     }
 };
 
@@ -176,6 +179,24 @@ function showToast(msg) {
     toast.textContent = msg;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+function triggerErrorFeedback(inputElement) {
+    if (inputElement) {
+        inputElement.classList.add('shake');
+        setTimeout(() => inputElement.classList.remove('shake'), 400);
+    }
+    if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]); // 觸覺震動反饋
+    }
+}
+
+function flashSuccessStatus() {
+    const statusBar = document.getElementById('status-bar');
+    if (statusBar) {
+        statusBar.classList.add('flash-success');
+        setTimeout(() => statusBar.classList.remove('flash-success'), 600);
+    }
 }
 
 function setLanguage(lang) {
@@ -262,8 +283,12 @@ async function decryptData(encryptedObj, password) {
 }
 
 async function unlockVault() {
-    const masterPass = document.getElementById('master-key').value;
-    if (!masterPass) return showToast(t('alertEmptyPass'));
+    const masterInput = document.getElementById('master-key');
+    const masterPass = masterInput.value;
+    if (!masterPass) {
+        triggerErrorFeedback(masterInput);
+        return showToast(t('alertEmptyPass'));
+    }
 
     document.getElementById('unlock-btn').textContent = "⌛...";
     try {
@@ -277,9 +302,13 @@ async function unlockVault() {
         document.getElementById('auth-card').style.display = 'none';
         document.getElementById('notice-section').style.display = 'none';
         document.getElementById('vault-content').style.display = 'block';
+        
+        flashSuccessStatus();
         renderList();
         resetTimer();
+        checkStorageQuota();
     } catch (e) {
+        triggerErrorFeedback(masterInput);
         alert(t('alertWrongPass'));
     }
     document.getElementById('unlock-btn').textContent = t('unlockBtn');
@@ -318,6 +347,7 @@ async function addEntry() {
     
     renderList();
     showToast(t('toastAdded'));
+    checkStorageQuota();
 }
 
 async function deleteEntry(id) {
@@ -331,6 +361,16 @@ async function deleteEntry(id) {
 async function saveToStorage() {
     const encrypted = await encryptData(window.vaultData, currentKey);
     localStorage.setItem('daily_offline_data', JSON.stringify(encrypted));
+}
+
+function checkStorageQuota() {
+    const dataStr = localStorage.getItem('daily_offline_data') || '';
+    // 一般 localStorage 上限為 5MB (約 5 * 1024 * 1024 bytes)
+    const usedBytes = new Blob([dataStr]).size;
+    const maxBytes = 5 * 1024 * 1024;
+    if (usedBytes / maxBytes > 0.8) {
+        showToast(t('storageQuotaWarning'));
+    }
 }
 
 function copyToClipboard(text) {
@@ -387,9 +427,11 @@ function renderList() {
         const btnGroup = el('div', '', 'item-actions');
         
         const copyBtn = el('button', t('actionCopy'));
+        copyBtn.setAttribute('aria-label', `Copy ${item.title}`);
         copyBtn.addEventListener('click', () => copyToClipboard(`${item.title}\n\n${item.content}`));
         
         const delBtn = el('button', t('actionDelete'), 'btn-danger');
+        delBtn.setAttribute('aria-label', `Delete ${item.title}`);
         delBtn.addEventListener('click', () => deleteEntry(item.id));
 
         btnGroup.append(copyBtn, " ", delBtn);
@@ -428,12 +470,39 @@ function importData() {
             alert(t('toastAdded'));
             fileInput.value = '';
             updateFileName();
+            checkStorageQuota();
         } catch (err) {
             alert(t('alertWrongPass'));
         }
     };
     reader.readAsText(fileInput.files[0]);
 }
+
+// ⌨️ 全域鍵盤事件處理器 (Keyboard Listener)
+document.addEventListener('keydown', (e) => {
+    // 1. Esc 鍵：緊急一鍵手動鎖定
+    if (e.key === 'Escape' && currentKey) {
+        lockVault();
+        showToast(t('toastLocked'));
+    }
+    
+    // 2. Ctrl/Cmd + Enter：快速儲存日誌
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        if (currentKey && document.getElementById('vault-content').style.display !== 'none') {
+            e.preventDefault();
+            addEntry();
+        } else if (!currentKey && document.getElementById('auth-card').style.display !== 'none') {
+            e.preventDefault();
+            unlockVault();
+        }
+    }
+
+    // 3. Enter 鍵在密碼輸入框時自動解鎖
+    if (e.key === 'Enter' && document.activeElement.id === 'master-key') {
+        e.preventDefault();
+        unlockVault();
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn-bilingual').addEventListener('click', () => setLanguage('bilingual'));
