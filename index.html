@@ -1,576 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-HK">
 <head>
-  <meta charset="UTF-8">
-  
-  <!-- SEO & Social Meta Tags (Dynamic defaults to English) -->
-  <title id="seo-title">EasyIn - Offline Interview & Written Test Companion | 面試易</title>
-  <meta name="title" id="seo-meta-title" content="EasyIn - Offline Interview & Written Test Companion | 面試易">
-  <meta name="description" id="seo-meta-desc" content="Your pocket interview coach. 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline, privacy-first PWA.">
-  <meta name="keywords" content="EasyIn, interview prep, hiring manager os, job interview scenarios, interview coach, 面試易, 面試技巧, 見工問題, 考官OS, 離線面試題庫">
-  <meta name="author" content="EasyIn">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://jackylawck.github.io/EasyIn/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🔍 1. SEO Essentials -->
+    <title>離線日誌 Daily Offline | 隨心書寫，靜思細想。Write Freely, Think Quietly.</title>
+    <meta name="description" content="🔒 純本地 AES-GCM 軍規加密離線日誌。零數據上雲、徹底阻隔 AI 爬蟲掃描。純前端零知識架構，支援 PWA 離線安裝，給私密思考一個絕對安全的數位避風港。| Zero-Knowledge Local Encrypted Journal. Anti-AI, Zero Cloud, PWA Ready.">
+    <meta name="keywords" content="離線日誌, Daily Offline, 加密日記, 零知識加密, AES-GCM, PWA, 防AI掃描, 隱私日記, Zero-Knowledge Journal, Anti-AI Journal, Encrypted Notes">
+    <meta name="author" content="Jacky Law">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jackylawck.github.io/Daily-Off/">
 
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="JZ5UohX-CcP_fQV0_DI9VadkKY4ZoTTkUifL88-fIcY" />
+    <!-- 🔍 Google Search Console Verification Tag -->
+    <meta name="google-site-verification" content="JZ5UohX-CcP_fQV0_DI9VadkKY4ZoTTkUifL88-fIcY" />
 
-  <!-- Open Graph / WhatsApp / LinkedIn Sharing Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jackylawck.github.io/EasyIn/">
-  <meta property="og:title" content="EasyIn 面試易 - 隨身面試教練 (40條商業實戰題庫 + 考官內心 OS)">
-  <meta property="og:description" content="踢爆面試官真實意圖！提供 Junior → Senior 三級應答框架與 10 秒救命掣。100% 免費、離線可用、極致隱私保護。">
-  <meta property="og:image" content="https://jackylawck.github.io/EasyIn/EasyInicon-512.png">
-  <meta property="og:site_name" content="EasyIn 面試易">
-  <meta property="og:locale" content="zh_HK">
+    <!-- 🌐 2. Open Graph Protocol (Facebook, LinkedIn, WhatsApp Preview Cards) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jackylawck.github.io/Daily-Off/">
+    <meta property="og:title" content="離線日誌 Daily Offline | 隨心書寫，靜思細想。">
+    <meta property="og:description" content="🔒 純本地 AES-GCM 256-bit 加密離線日誌。零數據上雲、徹底阻隔 AI 掃描。100% 離線可用，給私密思考一個絕對安全的數位避風港。">
+    <meta property="og:image" content="https://jackylawck.github.io/Daily-Off/DAILYOFFicon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="Daily Offline">
+    <meta property="og:locale" content="zh_HK">
+    <meta property="og:locale:alternate" content="en_US">
 
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://jackylawck.github.io/EasyIn/">
-  <meta name="twitter:title" content="EasyIn 面試易 - 100% 離線免費面試與筆試教練">
-  <meta name="twitter:description" content="40 條實戰商業題庫 + 考官內心 OS + 10 秒救命掣。助你掌握大將之風，輕鬆破解刁鑽面試題。">
-  <meta name="twitter:image" content="https://jackylawck.github.io/EasyIn/EasyInicon-512.png">
+    <!-- 🐦 3. Twitter / X Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://jackylawck.github.io/Daily-Off/">
+    <meta name="twitter:title" content="離線日誌 Daily Offline | Write Freely, Think Quietly.">
+    <meta name="twitter:description" content="Pure Local AES-GCM Encrypted Journal. Zero Cloud, Anti-AI Model Scraping, PWA Supported.">
+    <meta name="twitter:image" content="https://jackylawck.github.io/Daily-Off/DAILYOFFicon-512.png">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- App Icons for Favicon, PWA & iOS -->
-  <link rel="icon" type="image/png" sizes="192x192" href="EasyInicon-192.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="EasyInicon-512.png">
-  
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2563eb">
+    <!-- 🛡️ 4. Enterprise-Grade Content Security Policy (CSP) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; frame-ancestors 'none';">
 
-  <!-- Google Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "EasyIn 面試易",
-    "alternateName": "EasyIn Offline Interview Companion",
-    "url": "https://jackylawck.github.io/EasyIn/",
-    "logo": "https://jackylawck.github.io/EasyIn/EasyInicon-512.png",
-    "description": "100% 離線運行的隨身面試教練，收錄 40 條真實商業場景題庫、拆解考官內心 OS，提供 Junior 至 Senior 答題框架與 10 秒救命掣。",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "HKD"
+    <!-- 📱 5. PWA & Device Assets -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="./DAILYOFFicon-192.png">
+    <link rel="apple-touch-icon" href="./DAILYOFFicon-512.png">
+    
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Daily Offline">
+
+    <!-- 💡 6. JSON-LD Structured Data for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "離線日誌 Daily Offline",
+      "alternateName": "Daily Offline",
+      "url": "https://jackylawck.github.io/Daily-Off/",
+      "description": "純本地 AES-GCM 加密離線日記，無伺服器、防 AI 數據採集，100% 隱私安全的個人隨筆 PWA 應用。",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      }
     }
-  }
-  </script>
-
-  <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #1e293b;
-      --accent: #ef4444;
-      --warning: #f59e0b;
-      --success: #10b981;
-    }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
-    .container { max-width: 850px; margin: 0 auto; }
+    </script>
     
-    /* Top Bar & Value Proposition */
-    .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 10px; }
-    .value-prop { background: #eff6ff; border-left: 4px solid var(--primary); padding: 15px; border-radius: 0 8px 8px 0; margin-bottom: 20px; font-size: 0.95rem; }
-    .value-prop ul { margin: 5px 0 0; padding-left: 20px; }
-
-    /* Control Bar */
-    .filter-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; background: #fff; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .select-input { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.9rem; background: #fff; color: var(--text); font-weight: bold; }
-    
-    .btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
-    .btn-lang { background: #e2e8f0; color: #334155; }
-    .btn-lang:hover { background: #cbd5e1; }
-    .btn-challenge { background: var(--warning); color: #fff; }
-    .btn-challenge:hover { background: #d97706; }
-    
-    /* Card Styling */
-    .card { background: var(--card-bg); border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; margin-right: 6px; border: none; cursor: pointer; transition: 0.2s; margin-bottom: 5px;}
-    .tag:hover { background: #c7d2fe; }
-    .os-box { background: #fff7ed; border-left: 4px solid #f97316; padding: 12px; margin: 15px 0; border-radius: 0 8px 8px 0; font-size: 0.95rem; }
-    
-    .btn-group { display: flex; gap: 8px; margin: 15px 0; }
-    button.level-btn { flex: 1; padding: 10px; border: 1px solid #cbd5e1; background: #f8fafc; border-radius: 6px; cursor: pointer; font-weight: bold; color: #475569; transition: 0.2s; }
-    button.level-btn:hover { background: #e2e8f0; }
-    button.level-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    
-    .panic-btn { background: #fef2f2; color: var(--accent); border: 1px solid #fecaca; margin-top: 15px; width: 100%; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem;}
-    .panic-box { display: none; background: #1e293b; color: #fff; padding: 15px; border-radius: 8px; margin-top: 10px; }
-    
-    /* Navigation Bar */
-    .pagination-bar { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
-    .nav-btn { padding: 8px 16px; background: #3b82f6; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
-    .nav-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
-
-    .filter-banner { background: #dbeafe; color: #1e40af; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-    
-    /* Challenge Modal */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
-    .modal-content { background: #fff; padding: 30px; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; }
-  </style>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
 </head>
 <body>
-
-<div class="container">
-  <div class="top-bar">
-    <h1 style="margin:0; font-size: 1.8rem;" id="app-title">💡 EasyIn</h1>
-    <div>
-      <button class="btn btn-challenge" id="btn-challenge" onclick="startChallengeMode()">🎯 Challenge Mode</button>
-      <button class="btn btn-lang" id="btn-lang" onclick="toggleLanguage()">🌐 English / 中文</button>
-    </div>
-  </div>
-
-  <!-- Value Proposition -->
-  <div class="value-prop" id="value-prop">
-    <strong>Your Pocket Interview Coach</strong>
-    <ul>
-      <li><strong>🧠 Decode Trick Questions:</strong> 40 real business scenarios + "Hiring Manager OS".</li>
-      <li><strong>🛡️ Stress Management:</strong> "10s Panic Button" for a graceful landing.</li>
-      <li><strong>📈 Mindset Upgrade:</strong> Frameworks from Junior to Senior level.</li>
-    </ul>
-  </div>
-
-  <!-- Filter & Control Bar -->
-  <div class="filter-bar">
-    <div>
-      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;" id="label-category">📂 Category: </label>
-      <select id="category-select" class="select-input" onchange="onCategoryChange(this.value)">
-        <option value="ALL">All Categories</option>
-      </select>
-    </div>
-
-    <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
-      <label style="font-size:0.85rem; font-weight:bold; color:#64748b;" id="label-single-mode">🎴 Single Question Mode: </label>
-      <input type="checkbox" id="single-mode-toggle" checked onchange="toggleSingleMode(this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
-    </div>
-  </div>
-
-  <div id="filter-status"></div>
-  <div id="app">Loading...</div>
-
-  <!-- ISO / Privacy Compliance Footer -->
-  <footer style="margin-top: 40px; padding: 20px; background: #0f172a; color: #94a3b8; border-radius: 8px; font-size: 0.8rem; line-height: 1.5;">
-    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
-      <span style="color: #22c55e; font-weight: bold;">🔒 100% Offline PWA</span>
-      <span style="color: #38bdf8; font-weight: bold;">🛡️ Zero Data Retention</span>
-      <span style="color: #a855f7; font-weight: bold;">📄 Static Rule-Based</span>
-      <button onclick="purgeAllUserData()" id="btn-purge" style="background:#dc2626; color:#fff; border:none; padding:4px 10px; border-radius:4px; font-size:0.75rem; cursor:pointer; font-weight:bold;">
-        🗑️ Purge Local Data
-      </button>
-    </div>
-    
-    <div id="footer-notice">
-      <strong>Architecture & Compliance:</strong><br>
-      • <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>
-      • <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>
-      • <strong>Privacy-by-Design:</strong> GDPR data minimization compliant.
-    </div>
-  </footer>
-</div>
-
-<!-- Challenge Modal -->
-<div class="modal" id="challenge-modal">
-  <div class="modal-content" id="challenge-content"></div>
-</div>
-
-<script>
-  let questionsData = [];
-  let metaData = {};
-  let currentLang = 'en'; 
-  let activeTagFilter = null;
-  let activeCategoryFilter = 'ALL';
-  
-  let isSingleMode = true;
-  let currentIndex = 0;
-
-  // Dictionary for UI & Dynamic SEO Translations
-  const uiText = {
-    en: {
-      seoTitle: "EasyIn - Offline Interview & Written Test Companion | 面試易",
-      seoDesc: "Your pocket interview coach. 40 real business scenarios, Hiring Manager OS, Junior-to-Senior frameworks & 10s Panic Button. 100% offline, privacy-first PWA.",
-      title: "💡 EasyIn",
-      btnLang: "🌐 English / 中文",
-      challengeBtn: "🎯 Challenge Mode",
-      valueProp: "<strong>Your Pocket Interview Coach</strong><ul><li><strong>🧠 Decode Trick Questions:</strong> 40 real business scenarios + 'Hiring Manager OS'.</li><li><strong>🛡️ Stress Management:</strong> '10s Panic Button' for a graceful landing.</li><li><strong>📈 Mindset Upgrade:</strong> Frameworks from Junior to Senior level.</li></ul>",
-      categoryLabel: "📂 Category: ",
-      allCategories: "All Categories",
-      singleModeLabel: "🎴 Single Question Mode: ",
-      intent: "Intent: ",
-      os: "Hiring Manager OS: ",
-      script: "Script: ",
-      panicBtn: "🆘 Panic Button",
-      panicTitle: "⏱️ 10s Safe Landing Script:",
-      prev: "← Previous",
-      next: "Next →",
-      activeStrategy: "Active Strategy: ",
-      clearFilter: "Clear Filter",
-      noQuestions: "No questions found.",
-      purgeBtn: "🗑️ Purge Local Data",
-      footerNotice: "<strong>Architecture & Compliance:</strong><br>• <strong>Deterministic Architecture:</strong> Static reference tool (Non-AI), zero automated decision-making.<br>• <strong>Zero Telemetry:</strong> No backend server, zero cookies, zero analytics.<br>• <strong>Privacy-by-Design:</strong> GDPR data minimization compliant.",
-      purgeConfirm: "⚠️ Permanently purge all local data?",
-      purgeDone: "✅ All local data purged."
-    },
-    zh: {
-      seoTitle: "EasyIn 面試易 - 100%離線免費面試題庫 & 筆試攻略 | Pocket Interview Coach",
-      seoDesc: "面試易 EasyIn 是你隨身的面試教練。收錄 40 條真實商業場景題庫、獨家「考官內心 OS」、Junior 至 Senior 三級應答框架及 10 秒救命掣。100% 本機運行、零數據追蹤。",
-      title: "💡 EasyIn 面試易",
-      btnLang: "🌐 English / 中文",
-      challengeBtn: "🎯 考牌 Mode",
-      valueProp: "<strong>你隨身嘅面試教練</strong><ul><li><strong>🧠 拆解刁鑽題目：</strong> 40 條商業場景 +「考官內心 OS」，踢爆真正意圖。</li><li><strong>🛡️ 情緒管理：</strong>「10秒救命掣」幫你喺腦海空白時優雅降落。</li><li><strong>📈 思維升級：</strong> 提供 Junior 至 Senior 三級框架，睇住自己進步。</li></ul>",
-      categoryLabel: "📂 種類 (Category): ",
-      allCategories: "所有種類 (All Categories)",
-      singleModeLabel: "🎴 逐題刷題模式: ",
-      intent: "考官真意：",
-      os: "考官內心 OS：",
-      script: "應答腳本：",
-      panicBtn: "🆘 救命掣 (Panic Button)",
-      panicTitle: "⏱️ 10秒降落台詞：",
-      prev: "← 上一題",
-      next: "下一題 →",
-      activeStrategy: "目前心法篩選：",
-      clearFilter: "清除篩選",
-      noQuestions: "沒有找到相關題目。",
-      purgeBtn: "🗑️ 一鍵銷毀數據",
-      footerNotice: "<strong>架構與隱私合規聲明：</strong><br>• <strong>確定性架構：</strong> 100% 靜態檢索（Non-AI），無自動化決策。<br>• <strong>零數據追蹤：</strong> 無伺服器、零 Cookie、零 Analytics。<br>• <strong>隱私即設計：</strong> 完全符合 GDPR 數據極小化原則。",
-      purgeConfirm: "⚠️ 確定徹底銷毀所有本機數據？",
-      purgeDone: "✅ 數據已徹底銷毀。"
-    }
-  };
-
-  // Register Service Worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .catch(err => console.log('SW registration failed: ', err));
-  }
-
-  async function loadQuestions() {
-    try {
-      const res = await fetch('questions.json');
-      const fetchedData = await res.json();
-      questionsData = fetchedData.questions || fetchedData;
-      metaData = fetchedData.meta || {};
-      
-      updateStaticUI();
-      populateCategories();
-      renderApp();
-    } catch (e) {
-      document.getElementById('app').innerHTML = 'Failed to load questions. Check questions.json.';
-    }
-  }
-
-  function updateStaticUI() {
-    const t = uiText[currentLang];
-    
-    // 實時更新網頁標題與 SEO Description (支援中英文動態切換)
-    document.title = t.seoTitle;
-    document.getElementById('seo-meta-title').setAttribute('content', t.seoTitle);
-    document.getElementById('seo-meta-desc').setAttribute('content', t.seoDesc);
-    document.documentElement.lang = currentLang === 'zh' ? 'zh-HK' : 'en';
-
-    document.getElementById('app-title').innerText = t.title;
-    document.getElementById('btn-challenge').innerText = t.challengeBtn;
-    document.getElementById('value-prop').innerHTML = t.valueProp;
-    document.getElementById('label-category').innerText = t.categoryLabel;
-    document.getElementById('label-single-mode').innerText = t.singleModeLabel;
-    document.getElementById('btn-purge').innerText = t.purgeBtn;
-    document.getElementById('footer-notice').innerHTML = t.footerNotice;
-  }
-
-  function populateCategories() {
-    const select = document.getElementById('category-select');
-    const t = uiText[currentLang];
-    
-    let categories = [];
-    if(metaData.categories) {
-       categories = metaData.categories;
-    } else {
-       const catSet = new Set();
-       questionsData.forEach(q => { if (q.category && q.category[currentLang]) catSet.add(q.category[currentLang]); });
-       categories = Array.from(catSet);
-    }
-
-    select.innerHTML = `<option value="ALL">${t.allCategories}</option>`;
-    categories.forEach(cat => {
-      select.innerHTML += `<option value="${cat}">${cat}</option>`;
-    });
-    select.value = activeCategoryFilter;
-  }
-
-  function toggleLanguage() {
-    currentLang = currentLang === 'en' ? 'zh' : 'en';
-    updateStaticUI();
-    populateCategories();
-    renderApp();
-  }
-
-  function onCategoryChange(catValue) {
-    activeCategoryFilter = catValue;
-    currentIndex = 0;
-    renderApp();
-  }
-
-  function toggleSingleMode(checked) {
-    isSingleMode = checked;
-    currentIndex = 0;
-    renderApp();
-  }
-
-  function calculateDynamicDifficulty(q) {
-    if (!q.levels || !q.levels.junior || !q.levels.senior) return 3;
-    const jLength = q.levels.junior.script[currentLang] ? q.levels.junior.script[currentLang].length : 0;
-    const sLength = q.levels.senior.script[currentLang] ? q.levels.senior.script[currentLang].length : 0;
-    const diff = Math.abs(sLength - jLength);
-    if (diff > 80) return 5;
-    if (diff > 40) return 4;
-    return 3;
-  }
-
-  function filterByTag(tagZh) {
-    activeTagFilter = tagZh;
-    currentIndex = 0;
-    renderApp();
-  }
-
-  function clearFilter() {
-    activeTagFilter = null;
-    currentIndex = 0;
-    renderApp();
-  }
-
-  function getFilteredData() {
-    return questionsData.filter(q => {
-      const matchTag = activeTagFilter ? q.philosophy_tags.some(t => t.zh === activeTagFilter) : true;
-      const matchCat = activeCategoryFilter !== 'ALL' ? (q.category && (activeCategoryFilter.includes(q.category[currentLang]) || q.category[currentLang].includes(activeCategoryFilter))) : true;
-      return matchTag && matchCat;
-    });
-  }
-
-  function renderApp() {
-    const app = document.getElementById('app');
-    const filterStatus = document.getElementById('filter-status');
-    const displayData = getFilteredData();
-    const t = uiText[currentLang];
-
-    if (activeTagFilter) {
-      filterStatus.innerHTML = `
-        <div class="filter-banner">
-          <span>🧘 ${t.activeStrategy} <strong>${activeTagFilter}</strong> (${displayData.length})</span>
-          <button class="btn" style="background:#fff; color:#1e40af;" onclick="clearFilter()">${t.clearFilter}</button>
+    <div class="container" role="main">
+        <!-- Multi-language Switcher: Bilingual / Chinese / English -->
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+            <button class="lang-btn" id="btn-bilingual" aria-label="Switch to Bilingual Mode">中英雙語</button>
+            <button class="lang-btn" id="btn-zh" aria-label="切換至全中文介面">全中文</button>
+            <button class="lang-btn" id="btn-en" aria-label="Switch to English Interface">English</button>
         </div>
-      `;
-    } else {
-      filterStatus.innerHTML = '';
-    }
 
-    if (displayData.length === 0) {
-      app.innerHTML = `<div class="card"><p>${t.noQuestions}</p></div>`;
-      return;
-    }
+        <header>
+            <h1 data-i18n="appTitle"></h1>
+            <p class="slogan" data-i18n="slogan"></p>
+        </header>
 
-    let renderList = displayData;
-    if (isSingleMode) {
-      if (currentIndex >= displayData.length) currentIndex = 0;
-      renderList = [displayData[currentIndex]];
-    }
-
-    app.innerHTML = renderList.map(q => {
-      const dynamicDiff = calculateDynamicDifficulty(q);
-      const catName = q.category ? q.category[currentLang] : '';
-      
-      const targets = q.target_levels || ["junior", "mid_level", "senior"];
-      let buttonsHTML = '';
-      let defaultLevel = '';
-      
-      if (targets.includes("junior")) {
-        buttonsHTML += `<button class="level-btn" id="btn-${q.id}-junior" onclick="switchLevel('${q.id}', 'junior')">Junior</button>`;
-        if(!defaultLevel) defaultLevel = 'junior';
-      }
-      if (targets.includes("mid_level")) {
-        buttonsHTML += `<button class="level-btn" id="btn-${q.id}-mid_level" onclick="switchLevel('${q.id}', 'mid_level')">Mid-Level</button>`;
-        if(!defaultLevel) defaultLevel = 'mid_level';
-      }
-      if (targets.includes("senior")) {
-        buttonsHTML += `<button class="level-btn" id="btn-${q.id}-senior" onclick="switchLevel('${q.id}', 'senior')">Senior</button>`;
-        if(!defaultLevel) defaultLevel = 'senior';
-      }
-
-      const panicHTML = q.panic_mode ? `
-          <button class="panic-btn" onclick="togglePanic('${q.id}')">${t.panicBtn}</button>
-          <div class="panic-box" id="panic-${q.id}">
-            <strong>${t.panicTitle}</strong><br>${q.panic_mode.safe_landing_script[currentLang]}
-          </div>
-      ` : '';
-
-      return `
-        <div class="card" id="card-${q.id}">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:5px;">
-            <div>
-              ${q.philosophy_tags.map(tag => `<button class="tag" onclick="filterByTag('${tag.zh}')">⚔️ ${tag[currentLang]}</button>`).join('')}
-              <span class="tag" style="background:#f1f5f9; color:#475569;">⭐ Dynamic Level: ${dynamicDiff}/5</span>
+        <div class="card notice-card" id="notice-section">
+            <h4 style="margin:0;" data-i18n="noticeTitle"></h4>
+            <ul class="notice-list">
+                <li data-i18n="noticePoint1"></li>
+                <li data-i18n="noticePoint2"></li>
+                <li data-i18n="noticePoint3"></li>
+            </ul>
+        </div>
+        
+        <div class="card" id="auth-card">
+            <h3 data-i18n="unlockTitle"></h3>
+            <div style="position:relative;">
+                <input type="password" id="master-key" data-i18n-placeholder="masterKeyPlaceholder" aria-label="Master Password Input">
             </div>
-            ${catName ? `<span class="tag" style="background:#e2e8f0; color:#334155;">📂 ${catName}</span>` : ''}
-          </div>
-          <h2 style="margin-top:12px;">${q.title[currentLang]}</h2>
-          <p><strong>${t.intent}</strong> ${q.intent[currentLang]}</p>
-          
-          <div class="btn-group">
-            ${buttonsHTML}
-          </div>
+            <button class="primary-btn" id="unlock-btn" data-i18n="unlockBtn" aria-label="Unlock Vault Button"></button>
+            
+            <details class="reset-details">
+                <summary data-i18n="resetToggleText"></summary>
+                <div class="reset-box">
+                    <p class="reset-notice" data-i18n="resetWarningText"></p>
+                    <button class="danger-btn" id="btn-reset" data-i18n="resetBtnText" aria-label="Reset Vault Data"></button>
+                </div>
+            </details>
+        </div>
 
-          <div class="os-box" id="os-${q.id}"></div>
-          <p><strong>💡 ${t.script}</strong> <span id="script-${q.id}"></span></p>
-
-          ${panicHTML}
-
-          ${isSingleMode ? `
-            <div class="pagination-bar">
-              <button class="nav-btn" onclick="prevQuestion()" ${currentIndex === 0 ? 'disabled' : ''}>${t.prev}</button>
-              <span style="font-weight:bold; color:#64748b;">${currentIndex + 1} / ${displayData.length}</span>
-              <button class="nav-btn" onclick="nextQuestion()" ${currentIndex === displayData.length - 1 ? 'disabled' : ''}>${t.next}</button>
+        <div id="vault-content" style="display: none;">
+            <div class="status-bar" id="status-bar">
+                <span class="status-text" id="status-text" data-i18n="statusUnlocked"></span>
+                <button class="lock-btn" id="btn-lock" data-i18n="lockBtn" aria-label="Lock Vault (Shortcut: Esc)"></button>
             </div>
-          ` : ''}
+
+            <!-- New Entry Composition Section -->
+            <div class="card">
+                <h3 data-i18n="addTitle"></h3>
+                <input type="text" id="note-title" data-i18n-placeholder="noteTitlePlaceholder" aria-label="Journal Title">
+                <textarea id="note-content" rows="6" data-i18n-placeholder="noteContentPlaceholder" aria-label="Journal Content" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color); background:#0b0f19; color:#fff; box-sizing:border-box; font-size:0.95rem; resize:vertical;"></textarea>
+                
+                <div class="flex-row" style="margin-bottom: 8px;">
+                    <select id="note-mood" aria-label="Select Mood Tag" style="width:100%; padding:12px; margin:8px 0; border-radius:8px; border:1px solid var(--border-color); background:#0b0f19; color:#fff; font-size:0.95rem;">
+                        <option value="🌿 平靜 Quiet" data-i18n="moodQuiet"></option>
+                        <option value="💡 思考 Thoughtful" data-i18n="moodThoughtful"></option>
+                        <option value="☀️ 晴朗 Joyful" data-i18n="moodJoyful"></option>
+                        <option value="🌧️ 沉思 Reflective" data-i18n="moodReflective"></option>
+                    </select>
+                </div>
+
+                <div class="btn-hint-container">
+                    <button class="primary-btn" id="btn-add-entry" data-i18n="addBtn" aria-label="Encrypt and Save Journal Entry"></button>
+                    <span class="shortcut-hint">(Shortcut: Ctrl + Enter)</span>
+                </div>
+            </div>
+
+            <!-- Saved Entries List Section -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                    <h3 data-i18n="listTitle" style="margin:0;"></h3>
+                    <input type="text" id="search-input" data-i18n-placeholder="searchPlaceholder" aria-label="Search Journal Entries" style="width: 200px; padding: 6px 12px; margin:0;">
+                </div>
+                <div id="pass-list" style="margin-top: 15px;"></div>
+            </div>
+
+            <!-- Backup & Security Governance Section -->
+            <div class="card">
+                <h3 data-i18n="backupTitle"></h3>
+                <button class="secondary-btn" id="btn-change-pass" data-i18n="changePassBtn" style="margin-bottom: 12px;" aria-label="Change Master Password"></button>
+                <button class="primary-btn" id="btn-export" data-i18n="exportBtn" style="margin-bottom: 15px;" aria-label="Export Encrypted Backup"></button>
+                
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 15px 0;">
+                
+                <h4 style="margin: 0 0 8px 0;" data-i18n="importTitle"></h4>
+                <div class="file-upload-wrapper">
+                    <label for="import-file" class="file-upload-label" id="file-label" data-i18n="chooseFileBtn"></label>
+                    <input type="file" id="import-file" accept=".json" aria-label="Select JSON Backup File">
+                </div>
+                <button class="primary-btn" id="btn-import" data-i18n="importBtn" aria-label="Import Backup File"></button>
+            </div>
         </div>
-      `;
-    }).join('');
 
-    renderList.forEach(q => {
-      const targets = q.target_levels || ["junior", "mid_level", "senior"];
-      switchLevel(q.id, targets[0]);
-    });
-  }
+        <p class="notice-text" data-i18n="footerNotice"></p>
+    </div>
 
-  function prevQuestion() {
-    if (currentIndex > 0) {
-      currentIndex--;
-      renderApp();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }
-
-  function nextQuestion() {
-    const displayData = getFilteredData();
-    if (currentIndex < displayData.length - 1) {
-      currentIndex++;
-      renderApp();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }
-
-  function switchLevel(qId, level) {
-    const q = questionsData.find(item => item.id === qId);
-    const t = uiText[currentLang];
-    
-    document.getElementById(`os-${qId}`).innerHTML = `<strong>💥 ${t.os}</strong> ${q.levels[level].hiring_manager_os[currentLang]}`;
-    document.getElementById(`script-${qId}`).innerText = q.levels[level].script[currentLang];
-    
-    const targets = q.target_levels || ["junior", "mid_level", "senior"];
-    targets.forEach(lvl => {
-      const btn = document.getElementById(`btn-${qId}-${lvl}`);
-      if(btn) {
-        if(lvl === level) btn.classList.add('active');
-        else btn.classList.remove('active');
-      }
-    });
-  }
-
-  function togglePanic(qId) {
-    const box = document.getElementById(`panic-${qId}`);
-    box.style.display = box.style.display === 'block' ? 'none' : 'block';
-  }
-
-  function startChallengeMode() {
-    if (questionsData.length === 0) return;
-    const randomQ = questionsData[Math.floor(Math.random() * questionsData.length)];
-    const modal = document.getElementById('challenge-modal');
-    const content = document.getElementById('challenge-content');
-
-    const titleStr = currentLang === 'en' ? '🎯 Challenge Mode' : '🎯 考牌 Challenge Mode';
-    const subTitle = currentLang === 'en' ? 'Select the answer that best reflects your level of thinking:' : '請選擇你認為最合適、最能體現你思維層次的回答範例：';
-
-    const levelsAvailable = randomQ.target_levels || ["junior", "mid_level", "senior"];
-    let optA_Level = levelsAvailable.includes("junior") ? "junior" : "mid_level";
-    let optB_Level = "senior";
-
-    content.innerHTML = `
-      <h2>${titleStr}</h2>
-      <p><strong>Question:</strong> ${randomQ.title[currentLang]}</p>
-      <p>${subTitle}</p>
-      
-      <div style="margin: 15px 0;">
-        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', '${optA_Level}')">
-          <strong>Option A:</strong> ${randomQ.levels[optA_Level].script[currentLang]}
-        </div>
-        <div style="background:#f1f5f9; padding:12px; border-radius:8px; margin-bottom:10px; cursor:pointer;" onclick="revealAnswer('${randomQ.id}', '${optB_Level}')">
-          <strong>Option B:</strong> ${randomQ.levels[optB_Level].script[currentLang]}
-        </div>
-      </div>
-      <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'en' ? 'Cancel' : '關閉'}</button>
-    `;
-    modal.style.display = 'flex';
-  }
-
-  function revealAnswer(qId, chosenLevel) {
-    const q = questionsData.find(item => item.id === qId);
-    const content = document.getElementById('challenge-content');
-    
-    let resultHTML = '';
-    if (chosenLevel === 'senior') {
-      resultHTML = `
-        <h3 style="color:#10b981;">🎉 ${currentLang === 'en' ? 'Great Choice!' : '選擇成功！'}</h3>
-        <p>Your choice matches the <strong>Senior Level</strong> reference template.</p>
-        <p><strong>Core Focus:</strong> ${q.levels.senior.focus[currentLang]}</p>
-      `;
-    } else {
-      resultHTML = `
-        <h3 style="color:#2563eb;">💡 ${currentLang === 'en' ? 'Comparison' : '選擇對比'}</h3>
-        <p>Your choice matches a lower-level reference template. Compare it with the Senior approach below:</p>
-        <div style="background:#ecfdf5; border-left:4px solid #10b981; padding:10px; border-radius:4px;">
-          <strong>Senior Reference:</strong> ${q.levels.senior.script[currentLang]}
-        </div>
-      `;
-    }
-
-    content.innerHTML = `
-      <h2>${currentLang === 'en' ? '📊 Analysis Result' : '📊 範本比對結果'}</h2>
-      ${resultHTML}
-      <hr style="margin:20px 0; border:none; border-top:1px solid #e2e8f0;">
-      <button class="btn btn-challenge" onclick="startChallengeMode()">${currentLang === 'en' ? 'Next Question' : '再挑戰下一題'}</button>
-      <button class="btn btn-lang" onclick="closeChallenge()">${currentLang === 'en' ? 'Close' : '返回主頁'}</button>
-    `;
-  }
-
-  function closeChallenge() {
-    document.getElementById('challenge-modal').style.display = 'none';
-  }
-
-  async function purgeAllUserData() {
-    const t = uiText[currentLang];
-    if (confirm(t.purgeConfirm)) {
-      localStorage.clear();
-      sessionStorage.clear();
-
-      if (window.indexedDB && indexedDB.databases) {
-        const dbs = await indexedDB.databases();
-        dbs.forEach(db => indexedDB.deleteDatabase(db.name));
-      }
-
-      if (window.caches) {
-        const cacheNames = await caches.keys();
-        await Promise.all(cacheNames.map(name => caches.delete(name)));
-      }
-
-      alert(t.purgeDone);
-      location.reload();
-    }
-  }
-
-  loadQuestions();
-</script>
-
+    <!-- Floating Toast Alert -->
+    <div id="toast" role="alert" aria-live="polite"></div>
 </body>
 </html>
