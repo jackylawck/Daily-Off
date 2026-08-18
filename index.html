@@ -12,12 +12,12 @@
       ================================================================
     -->
 
-    <!-- 🔍 1. SEO Essentials & Branding -->
+    <!-- 🔍 1. SEO 搜尋引擎摘要 (已移除公開宣傳姓名，聚焦純產品特點) -->
     <title>離線日誌 Daily Offline | 隨心書寫，靜思細想。Write Freely, Think Quietly.</title>
-    <meta name="description" content="🔒 純本地 AES-GCM 軍規加密離線日誌。零數據上雲、徹底阻隔 AI 爬蟲採集。純前端零知識架構，支援 PWA 離線安裝。| Zero-Knowledge Local Encrypted Journal. Anti-AI, Zero Cloud, PWA Ready.">
+    <meta name="description" content="🔒 純本地 AES-GCM 軍規加密離線日誌。零數據上雲、徹底阻隔 AI 爬蟲採集。純前端零知識架構，支援 PWA 離線安裝，給私密思考一個絕對安全的數位避風港。| Zero-Knowledge Local Encrypted Journal. Anti-AI, Zero Cloud, PWA Ready.">
     <meta name="keywords" content="羅子淇, Jacky Law, 離線日誌, Daily Offline, 加密日記, 零知識加密, AES-GCM, PWA, 防AI掃描, 隱私日記, Zero-Knowledge Journal, Anti-AI Journal, Encrypted Notes">
     
-    <!-- 👤 Author & Creator Metadata (Code-level Only) -->
+    <!-- 👤 程式碼底層作者與版權識別 (供演算法與爬蟲識別，不顯示在搜尋摘要) -->
     <meta name="author" content="羅子淇 Jacky Law">
     <meta name="creator" content="羅子淇 Jacky Law">
     <meta name="publisher" content="羅子淇 Jacky Law">
@@ -26,14 +26,14 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://jackylawck.github.io/Daily-Off/">
 
-    <!-- 🔍 Google Search Console Verification Tag -->
+    <!-- 🔍 Google Search Console 網站驗證標籤 -->
     <meta name="google-site-verification" content="JZ5UohX-CcP_fQV0_DI9VadkKY4ZoTTkUifL88-fIcY" />
 
-    <!-- 🌐 2. Open Graph Protocol (Facebook, LinkedIn, WhatsApp Preview Cards) -->
+    <!-- 🌐 2. Open Graph Protocol (社群卡片摘要已去除個人名字) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jackylawck.github.io/Daily-Off/">
     <meta property="og:title" content="離線日誌 Daily Offline | 隨心書寫，靜思細想。">
-    <meta property="og:description" content="🔒 純本地 AES-GCM 256-bit 加密離線日誌。零數據上雲、徹底阻隔 AI 採集。極致隱私的數位避風港。">
+    <meta property="og:description" content="🔒 純本地 AES-GCM 256-bit 加密離線日誌。零數據上雲、徹底阻隔 AI 採集。100% 離線可用，極致隱私的數位避風港。">
     <meta property="og:image" content="https://jackylawck.github.io/Daily-Off/DAILYOFFicon-512.png">
     <meta property="og:image:width" content="512">
     <meta property="og:image:height" content="512">
@@ -41,14 +41,14 @@
     <meta property="og:locale" content="zh_HK">
     <meta property="og:locale:alternate" content="en_US">
 
-    <!-- 🐦 3. Twitter / X Card -->
+    <!-- 🐦 3. Twitter / X Card (去除個人名字) -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:url" content="https://jackylawck.github.io/Daily-Off/">
     <meta name="twitter:title" content="離線日誌 Daily Offline | Write Freely, Think Quietly.">
     <meta name="twitter:description" content="Pure Local AES-GCM Encrypted Journal. Zero Cloud, Anti-AI Scraping, PWA Ready.">
     <meta name="twitter:image" content="https://jackylawck.github.io/Daily-Off/DAILYOFFicon-512.png">
 
-    <!-- 🛡️ 4. Enterprise-Grade Content Security Policy (CSP) -->
+    <!-- 🛡️ 4. 企業級嚴格 Content Security Policy (CSP) -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; frame-ancestors 'none';">
 
     <!-- 📱 5. PWA & Device Assets -->
@@ -61,7 +61,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Daily Offline">
 
-    <!-- 💡 6. JSON-LD Structured Data for Google Rich Snippets & Person Attribution -->
+    <!-- 💡 6. 結構化數據 (Schema.org JSON-LD - 僅演算法讀取作者關聯，前台不可見) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -97,7 +97,7 @@
 </head>
 <body>
     <div class="container" role="main">
-        <!-- Multi-language Switcher: Bilingual / Chinese / English -->
+        <!-- 語言切換選單：雙語 / 全中文 / 全英文 -->
         <div class="lang-switch" role="group" aria-label="Language Selector">
             <button class="lang-btn" id="btn-bilingual" aria-label="Switch to Bilingual Mode">中英雙語</button>
             <button class="lang-btn" id="btn-zh" aria-label="切換至全中文介面">全中文</button>
@@ -140,7 +140,7 @@
                 <button class="lock-btn" id="btn-lock" data-i18n="lockBtn" aria-label="Lock Vault (Shortcut: Esc)"></button>
             </div>
 
-            <!-- New Entry Composition Section -->
+            <!-- 日誌撰寫區 -->
             <div class="card">
                 <h3 data-i18n="addTitle"></h3>
                 <input type="text" id="note-title" data-i18n-placeholder="noteTitlePlaceholder" aria-label="Journal Title">
@@ -161,7 +161,7 @@
                 </div>
             </div>
 
-            <!-- Saved Entries List Section -->
+            <!-- 日誌列表區 -->
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                     <h3 data-i18n="listTitle" style="margin:0;"></h3>
@@ -170,7 +170,7 @@
                 <div id="pass-list" style="margin-top: 15px;"></div>
             </div>
 
-            <!-- Backup & Security Governance Section -->
+            <!-- 數據管理區 -->
             <div class="card">
                 <h3 data-i18n="backupTitle"></h3>
                 <button class="secondary-btn" id="btn-change-pass" data-i18n="changePassBtn" style="margin-bottom: 12px;" aria-label="Change Master Password"></button>
@@ -190,7 +190,7 @@
         <p class="notice-text" data-i18n="footerNotice"></p>
     </div>
 
-    <!-- Floating Toast Alert -->
+    <!-- 浮動提示框 (Toast Alert) -->
     <div id="toast" role="alert" aria-live="polite"></div>
 </body>
 </html>
